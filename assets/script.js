@@ -1,88 +1,137 @@
-var startButton = document.querySelector(".start-button");
-var timerElement = document.querySelector(".timer-count");
-var correct = document.querySelector(".correct");
-var wrong = document.querySelector(".wrong");
+var BtnStart = document.getElementById("start-button");
+BtnStart.addEventListener("click", startGame);
 
-var chosenWord = ""
-var numBlanks = 0;
-var winCounter = 0;
-var loseCounter = 0;
-var isCorrect = false;
-var timer;
-var timerCount;
-
-document.getElementById("quiz-container").appendChild;
-
-var quizQuestions = [
-    {
-        question1: "Commonly used data types Do Not include:",
-        a: "strings",
-        b: "booleans",
-        c: "alerts",
-        d: "numbers",
-        correct: "booleans",
-    },
-    
-    
-    {
-        question2: "What does CSS stand for?",
-        a: "Central Style Sheets",
-        b: "Cascading Style Sheets",
-        c: "Cascading Simple Sheets",
-        d: "Cars SUVs Sailboats",
-        correct: "Cascading Style Sheets",
-    },
-    {
-        question3: "The condition in an if/else statement is enclosed with______.",
-        a: "quotes",
-        b: "curly brackets",
-        c: "parenthesis",
-        d: "square brackets",
-        correct: "parenthesis",
-    },
-    {
-        question4: "Arrays in JavaScript can be used to store___",
-        a: "numbers and strings",
-        b: "other arrays",
-        c: "booleans",
-        d: "all of the above",
-        correct: "all of the above",
-    },
-    {
-        question5: "String values must be enclosed within ______ when being assigned to variables.",
-        a: "commas",
-        b: "curly brackets",
-        c: "quotes",
-        d: "parenthesis",
-        correct: "curly brackets",
-    },
-
-];
-
-var startBtn= document.querySelector("#start");
-var startContainer=document.querySelector("#start-container");
-var quizContainer=document.querySelector("#quiz-container")
-
-
-
-function startGame(){
-    timerCount = 60;
-    console.log("gamestarted");
-    startContainer.setAttribute("class", "hide")
-    quizContainer.removeAttribute("class", "hide")
+function startGame() {
+  BtnStart.style.display = "none";
+  var BtnNext = document.getElementById("next");
+  BtnNext.style.display = "block";
+  var BtnPrevious = document.getElementById("previous");
+  BtnPrevious.style.display = "block";
 }
 
-var currentQuiz = 0
-var score = 0
 
-startBtn.addEventListener("click",startGame);
 
-// The startGame function is called when the start button is clicked
-function startGame() {
-    isWin = false;
-    timerCount = 60;
-    // Prevents start button from being clicked when round is in progress
-    startButton.disabled = true;
-    renderBlanks()
-    startTimer()
+// Variables
+var quizContainer = document.getElementById('start-button');
+var BtnNext = document.getElementById('next');
+var BtnPrevious = document.getElementById('previous');
+var BtnSubmit = document.getElementById('submit-button');
+var myQuestions = [
+  {
+    question: "Who invented JavaScript?",
+    answers: {
+      a: "Douglas Crockford",
+      b: "Sheryl Sandberg",
+      c: "Brendan Eich"
+    },
+    correctAnswer: "c"
+  },
+  {
+    question: "Which one of these is a JavaScript package manager?",
+    answers: {
+      a: "Node.js",
+      b: "TypeScript",
+      c: "npm"
+    },
+    correctAnswer: "c"
+  },
+  {
+    question: "Which tool can you use to ensure code quality?",
+    answers: {
+      a: "Angular",
+      b: "jQuery",
+      c: "RequireJS",
+      d: "ESLint"
+    },
+    correctAnswer: "d"
   }
+];
+
+
+
+
+
+
+
+
+(function(){
+    // Functions
+    function buildQuiz(){
+      // variable to store the HTML output
+      const output = [];
+  
+      // for each question...
+      myQuestions.forEach(
+        (currentQuestion, questionNumber) => {
+  
+          // variable to store the list of possible answers
+          const answers = [];
+  
+          // and for each available answer...
+          for(letter in currentQuestion.answers){
+  
+            // ...add an HTML radio button
+            answers.push(
+              `<label>
+                <input type="radio" name="question${questionNumber}" value="${letter}">
+                ${letter} :
+                ${currentQuestion.answers[letter]}
+              </label>`
+            );
+          }
+  
+          // add this question and its answers to the output
+          output.push(
+            `<div class="slide">
+              <div class="question"> ${currentQuestion.question} </div>
+              <div class="answers"> ${answers.join("")} </div>
+            </div>`
+          );
+        }
+      );
+  
+      // finally combine our output list into one string of HTML and put it on the page
+      quizContainer.innerHTML = output.join('');
+    }
+  
+    function showResults(){
+  
+      // gather answer containers from our quiz
+      const answerContainers = quizContainer.querySelectorAll('.answers');
+  
+      // keep track of user's answers
+      let numCorrect = 0;
+  
+      // for each question...
+      myQuestions.forEach( (currentQuestion, questionNumber) => {
+  
+        // find selected answer
+        const answerContainer = answerContainers[questionNumber];
+        const selector = `input[name=question${questionNumber}]:checked`;
+        const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+  
+        // if answer is correct
+        if(userAnswer === currentQuestion.correctAnswer){
+          // add to the number of correct answers
+          numCorrect++;
+  
+          // color the answers green
+          answerContainers[questionNumber].style.color = 'lightgreen';
+        }
+        // if answer is wrong or blank
+        else{
+          // color the answers red
+          answerContainers[questionNumber].style.color = 'red';
+        }
+      });
+  
+      // show number of correct answers out of total
+      resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+    }
+
+    // Event listeners
+    submitButton.addEventListener('click', showResults);
+    previousButton.addEventListener("click", showPreviousSlide);
+    nextButton.addEventListener("click", showNextSlide);
+  })();
+  

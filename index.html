@@ -1,42 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Fun JavaScript Coding Quiz</title>
-    <link rel="stylesheet" type="text/css" href="./assets/css/style.css" />
-  </head>
 
-  <body>
-    <header></header>
-    <main>
-      <div class="start-container" id="start-container">
-        <div class="quiz-header">
-          <h1>Fun Coding Quiz Challenge</h1>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore
-            cupiditate harum ab eaque quos esse laboriosam corrupti architecto
-            tempora odit.
-          </p>
-          <button id="start">START</button>
-        </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fun JavaScript Coding Quiz</title>
+  <link rel="stylesheet" type="text/css" href="./assets/style.css" />
+</head>
+
+<body> 
+  <header></header>
+  <main>
+    <div class="start-container" id="start-container">
+      <div class="quiz-header">
+        <h1>Real Hard JavaScript Quiz</h1>
+        <div id="seconds-counter">75</div>
       </div>
+      <p>Try to answer the following code-related questions within the time limit.</p>
+      <p>Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
+      <button id="start-button">Start</button>
+      <button id="previous">Previous Question</button>
+      <button id="next">Next Question</button>
+      <button id="submit-button">Submit</button>
+      <div id="result"></div>
+      <!-- <button id="result" onlcick()="decrementSeconds()">START</button> -->
+    </div>
 
-      <div class="quiz-container hide" id="quiz-container">
-        <div class="quiz-header">
-         <div class=""> 
+    <div class="quiz-container hide" id="quiz-container">
+      <div class="quiz-header">
+    </div>
+  </main>
+<script src="./assets/script.js"></script>
+</body>
 
-          <h1>Questions</h1>
-          <ul>
-            <li>strings</li>
-            <li>booleans</li>
-            <li>alerts</li>
-            <li>numbers</li>
-          </ul>
-        </div>
-      </div>
-    </main>
-    <script src="./assets/js/script.js"></script>
-  </body>
 </html>

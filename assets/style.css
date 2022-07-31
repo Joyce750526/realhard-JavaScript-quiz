@@ -1,69 +1,81 @@
-*{
-    box-sizing: border-box;
-    border-width: 10px;
-  
-  }
-  body{
-    background-color: #b8c6db;
-    background-image: linear-gradient(315deg, #b8c6db 0%, #f5f7f7 100%);
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', 'Arial, sans-serif';
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-    overflow: hidden;
-    margin: 0;
-  }
-  .quiz-container{
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px 2px rgba(100, 100, 100, 0.1);
-    width: 600px;
-    overflow: hidden;
-    margin: 5px;
-  }
-  .quiz-header{
-    padding: 100px;
-  }
-  h2{
-    padding: 5px;
-    text-align: center;
-    margin: 0;
-  }
-  
-  ul{
-    list-style-type: none;
-   align-content: flex-start;
-    padding: 0;
-  }
-  ul li{
-    font-size: 1.2rem;
-    align-content: flex-start;
-    margin: 1rem 0;
-  }
-  ul li label{
-    cursor: pointer;
-  }
-  button{
-    background-color: #03cae4;
-    color: #fff;
-    border: none;
-    display: block;
-    width: 100%;
-    cursor: pointer;
-    font-size: 1.1rem;
-    font-family: inherit;
-    padding: 1.3rem;
-  }
-  button:hover{
-    background-color: #04adc4;
-  }
-  button:focus{
-    outline: none;
-    background-color: #44b927;
-  }
-  
-  
-  
-  .hide{display:none};
-  
+/* * body {
+  font-size: 12px;
+  font-style:normal;
+  font-weight: 100;
+  font-stretch: condensed;
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+  color: #333;
+  text-align: center;
+  display: block;
+  background-color: #f8f6f0;
+}
+/* div.seconds-counter{
+  font-size: 12px;
+  font-style:normal;
+  font-weight: 100;
+  align-items: left;
+} */
+
+h1 {
+  text-align: center;
+  border-radius: 10px;
+  font-weight: 300;
+  margin: 0px;
+  padding: 10px;
+  font-size: 20px;
+  background-color: #444;
+  color: #fff;
+}
+.question {
+  font-size: 30px;
+  margin-bottom: 10px;
+}
+.answers {
+  margin-bottom: 20px;
+  text-align: left;
+  display: inline-block;
+}
+.answers label {
+  display: block;
+  margin-bottom: 10px;
+}
+button {
+  font-family: "Work Sans", sans-serif;
+  font-size: 18px;
+  background-color: #279;
+  color: #fff;
+  border: 0px;
+  border-radius: 10px;
+  padding: 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  flex-direction: row;
+  justify-items: flex-start;
+}
+#previous, #next, #submit-button{
+display:none;
+}
+
+
+button:hover {
+  background-color: #38a;
+}
+
+.slide {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s;
+}
+.active-slide {
+  opacity: 1;
+  z-index: 2;
+}
+.quiz-container {
+  position: relative;
+  height: 200px;
+  margin-top: 40px;
+} 
