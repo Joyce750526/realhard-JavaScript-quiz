@@ -1,21 +1,16 @@
-var BtnStart = document.getElementById("start-button");
-BtnStart.addEventListener("click", startGame);
-
-function startGame() {
-  BtnStart.style.display = "none";
-  var BtnNext = document.getElementById("next");
-  BtnNext.style.display = "block";
-  var BtnPrevious = document.getElementById("previous");
-  BtnPrevious.style.display = "block";
-  builtQuiz();
-}
-
 // Variables
+var BtnStart = document.getElementById("start-button");
+var quizInstruction = document.querySelector(".quiz-insturction");
 var timeleft = 75;
-var quizContainer = document.getElementById("start-button");
+var quizContainer = document.querySelector("#quiz-container");
 var BtnNext = document.getElementById("next");
+var questionText= document.createElement("h1");
 var BtnPrevious = document.getElementById("previous");
 var BtnSubmit = document.getElementById("submit-button");
+var option1 = document.createElement("button");
+var option2 = document.createElement("button");
+var option3 = document.createElement("button");
+var option4 = document.createElement("button");
 var myQuestions = [
   {
     question: "What is it called when you turn elements into a list?",
@@ -48,77 +43,108 @@ var myQuestions = [
   },
 ];
 
-(function () {
-  // Functions
-  function buildQuiz() {
-    // variable to store the HTML output
-    const output = [];
+// Functions
+function startGame() {
+  quizInstruction.classList.add("hide");
+  quizContainer.classList.remove("hide");
+  BtnStart.style.display = "none";
+  var BtnNext = document.getElementById("next");
+  BtnNext.style.display = "block";
+  var BtnPrevious = document.getElementById("previous");
+//   BtnPrevious.style.display = "block";
+  BtnPrevious.classList.add("hide");
+  builtQuiz();
+}
 
-    // for each question...
-    myQuestions.forEach((currentQuestion, questionNumber) => {
-      // variable to store the list of possible answers
-      const answers = [];
+function builtQuiz() {
+  option1.innerHTML = myQuestions[0].answers.choice1;
+  option2.innerHTML = myQuestions[0].answers.choice2;
+  option3.innerHTML = myQuestions[0].answers.choice3;
+  option4.innerHTML = myQuestions[0].answers.choice4;
+  question1.innerHTML = text[0].answers.choice1;
 
-      // and for each available answer...
-      for (letter in currentQuestion.answers) {
-        // ...add an HTML radio button
-        answers.push(
-          `<label>
+
+  quizContainer.appendChild(option1);
+  quizContainer.appendChild(option2);
+  quizContainer.appendChild(option3);
+  quizContainer.appendChild(option4);
+
+
+
+
+
+
+
+
+
+  // variable to store the HTML output
+  const output = [];
+
+  // for each question...
+  myQuestions.forEach((currentQuestion, questionNumber) => {
+    // variable to store the list of possible answers
+    const answers = [];
+
+    // and for each available answer...
+    for (letter in currentQuestion.answers) {
+      // ...add an HTML radio button
+      answers.push(
+        `<label>
                 <input type="radio" name="question${questionNumber}" value="${letter}">
                 ${letter} :
                 ${currentQuestion.answers[letter]}
               </label>`
-        );
-      }
+      );
+    }
 
-      // add this question and its answers to the output
-      output.push(
-        `<div class="slide">
+    // add this question and its answers to the output
+    output.push(
+      `<div class="slide">
               <div class="question"> ${currentQuestion.question} </div>
               <div class="answers"> ${answers.join("")} </div>
             </div>`
-      );
-    });
+    );
+  });
 
-    // finally combine our output list into one string of HTML and put it on the page
-    quizContainer.innerHTML = output.join("");
-  }
+  // finally combine our output list into one string of HTML and put it on the page
+//   quizContainer.innerHTML = output.join("");
+}
 
-  function showResults() {
-    // gather answer containers from our quiz
-    const answerContainers = quizContainer.querySelectorAll(".answers");
+function showResults() {
+  // gather answer containers from our quiz
+  const answerContainers = quizContainer.querySelectorAll(".answers");
 
-    // keep track of user's answers
-    let numCorrect = 0;
+  // keep track of user's answers
+  let numCorrect = 0;
 
-    // for each question...
-    myQuestions.forEach((currentQuestion, questionNumber) => {
-      // find selected answer
-      const answerContainer = answerContainers[questionNumber];
-      const selector = `input[name=question${questionNumber}]:checked`;
-      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
+  // for each question...
+  myQuestions.forEach((currentQuestion, questionNumber) => {
+    // find selected answer
+    const answerContainer = answerContainers[questionNumber];
+    const selector = `input[name=question${questionNumber}]:checked`;
+    const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-      // if answer is correct
-      if (userAnswer === currentQuestion.correctAnswer) {
-        // add to the number of correct answers
-        numCorrect++;
+    // if answer is correct
+    if (userAnswer === currentQuestion.correctAnswer) {
+      // add to the number of correct answers
+      numCorrect++;
 
-        // color the answers green
-        answerContainers[questionNumber].style.color = "lightgreen";
-      }
-      // if answer is wrong or blank
-      else {
-        // color the answers red
-        answerContainers[questionNumber].style.color = "red";
-      }
-    });
+      // color the answers green
+      answerContainers[questionNumber].style.color = "lightgreen";
+    }
+    // if answer is wrong or blank
+    else {
+      // color the answers red
+      answerContainers[questionNumber].style.color = "red";
+    }
+  });
 
-    // show number of correct answers out of total
-    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
-  }
+  // show number of correct answers out of total
+  resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+}
 
-  // Event listeners
-  submitButton.addEventListener("click", showResults);
-  previousButton.addEventListener("click", showPreviousSlide);
-  nextButton.addEventListener("click", showNextSlide);
-})();
+// // Event listeners
+// submitButton.addEventListener("click", showResults);
+// previousButton.addEventListener("click", showPreviousSlide);
+// nextButton.addEventListener("click", showNextSlide);
+BtnStart.addEventListener("click", startGame);
