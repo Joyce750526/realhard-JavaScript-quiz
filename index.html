@@ -1,39 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fun JavaScript Coding Quiz</title>
+    <link rel="stylesheet" type="text/css" href="./assets/style.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Fun JavaScript Coding Quiz</title>
-  <link rel="stylesheet" type="text/css" href="./assets/style.css" />
-</head>
-
-<body> 
-  <header></header>
-  <main>
-    <div class="start-container" id="start-container">
-      <div class="quiz-header">
-        <h1>Real Hard JavaScript Quiz</h1>
-        <div id="seconds-counter">75</div>
+  <body>
+    <header></header>
+    <main>
+      <div class="start-container" id="start-container">
+        <div class="quiz-header">
+          <h1>Real Hard JavaScript Quiz</h1>
+          <div id="seconds-counter">75</div>
+          <div class="time-left">Time Left</div>
+        <div id="scores-count">View Higher Score</div>
+        </div>
+        <div class="quiz-insturction">
+          <p>
+            Try to answer the following code-related questions within the time
+            limit.
+          </p>
+          <p>
+            Keep in mind that incorrect answers will penalize your score/time by
+            ten seconds!
+          </p>
+        </div>
+        <button id="start-button">Start</button>
+        <button id="previous">Previous Question</button>
+        <button id="next">Next Question</button>
+        <button id="submit-button">Submit</button>
+        <div id="result"></div>
+        <!-- <button id="result" onlcick()="decrementSeconds()">START</button> -->
       </div>
-      <div class="quiz-insturction">
-      <p>Try to answer the following code-related questions within the time limit.</p>
-      <p>Keep in mind that incorrect answers will penalize your score/time by ten seconds!</p>
-    </div>
-      <button id="start-button">Start</button>
-      <button id="previous">Previous Question</button>
-      <button id="next">Next Question</button>
-      <button id="submit-button">Submit</button>
-      <div id="result"></div>
-      <!-- <button id="result" onlcick()="decrementSeconds()">START</button> -->
-    </div>
 
-    <div class="quiz-container hide" id="quiz-container">
-      <div class="quiz-header">
-    </div>
-  </main>
-<script src="./assets/script.js"></script>
-</body>
-
+      <div class="quiz-container hide" id="quiz-container">
+        <div class="quiz-header"><h2 id="myQuestions"></h2></div>
+        <div class="answer-container" id="answer-1">
+          <button id="choice-1">Function</button>
+        <button id="choice-2">Previous Question</button>
+        <button id="choice-3">Next Question</button>
+        <button id="choice-4">Submit</button>
+        </div>
+        
+      </div>
+    </main>
+    <script src="./assets/script.js"></script>
+  </body>
 </html>

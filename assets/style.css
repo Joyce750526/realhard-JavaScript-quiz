@@ -26,18 +26,33 @@ h1 {
   background-color: #444;
   color: #fff;
 }
+
 .question {
   font-size: 30px;
   margin-bottom: 10px;
 }
+
 .answers {
   margin-bottom: 20px;
   text-align: left;
   display: inline-block;
 }
+
 .answers label {
   display: block;
   margin-bottom: 10px;
+}
+
+.scores-count{
+  margin-bottom: 20px;
+  text-align: left;
+  display: inline-block;
+}
+.seconds-counter{
+  margin: 20px;
+  text-align: center;
+  display: inline-block;
+
 }
 button {
   font-family: "Work Sans", sans-serif;
@@ -52,33 +67,22 @@ button {
   flex-direction: row;
   justify-items: flex-start;
 }
-#previous, #next, #submit-button{
-display:none;
-}
 
+#previous,
+#next,
+#submit-button {
+  display: none;
+}
 
 button:hover {
   background-color: #38a;
 }
 
-.slide {
-  position: absolute;
-  left: 0px;
-  top: 0px;
-  width: 100%;
-  z-index: 1;
-  opacity: 0;
-  transition: opacity 0.5s;
-}
-.active-slide {
-  opacity: 1;
-  z-index: 2;
-}
 .quiz-container {
   position: relative;
   height: 200px;
   margin-top: 40px;
-} 
+}
 
 .hide {
   display: none;
