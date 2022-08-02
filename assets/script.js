@@ -1,16 +1,19 @@
+
+
+
 // Variables
 var BtnStart = document.getElementById("start-button");
 var quizInstruction = document.querySelector(".quiz-insturction");
 var quizContainer = document.querySelector("#quiz-container");
 var BtnNext = document.getElementById("next");
-var questionText = document.createElement("h1");
+var questionText = document.querySelector("#questions-display");
 var BtnPrevious = document.getElementById("previous");
 var BtnSubmit = document.getElementById("submit-button");
 var timeCount=document.querySelector("timer", "seconds-counter");
-// var option1 = document.createElement("button");
-// var option2 = document.createElement("button");
-// var option3 = document.createElement("button");
-// var option4 = document.createElement("button");
+var option1 = document.querySelector("#choice-1");
+var option2 = document.querySelector("#choice-2");
+var option3 = document.querySelector("#choice-3");
+var option4 = document.querySelector("#choice-4");
 
 // var timeleft = 75;
 // var interval = setInterval(function(){
@@ -24,7 +27,7 @@ var timeCount=document.querySelector("timer", "seconds-counter");
 //     }
 //   }, 1000);
 
-
+var currentIndex= 0
 var myQuestions = [
     {
         question: "What is it called when you turn elements into a list?",
@@ -72,16 +75,15 @@ function startGame() {
 }
 
 function builtQuiz() {
-    option1.innerHTML = myQuestions[0].answers.choice1;
-    option2.innerHTML = myQuestions[0].answers.choice2;
-    option3.innerHTML = myQuestions[0].answers.choice3;
-    option4.innerHTML = myQuestions[0].answers.choice4;
-    question1.innerHTML = text[0].answers.choice1;
+    var currentQuestion=myQuestions[currentIndex]
+    option1.innerHTML = currentQuestion.answers.choice1;
+    option2.innerHTML = currentQuestion.answers.choice2;
+    option3.innerHTML = currentQuestion.answers.choice3;
+    option4.innerHTML = currentQuestion.answers.choice4;
+    questionText.innerHTML = currentQuestion.question;
 
-    quizContainer.appendChild(option1);
-    quizContainer.appendChild(option2);
-    quizContainer.appendChild(option3);
-    quizContainer.appendChild(option4);
+    
+  
 
 
 element.textContent=""
